@@ -137,7 +137,6 @@ const App: React.FC = () => {
       try {
         const loadedPosts = await Promise.all(
           BLOG_FILES.map(async (filename) => {
-            // const response = await fetch(`./blog/${filename}`);
             const response = await fetch(`${import.meta.env.BASE_URL}blog/${filename}`);
             if (!response.ok) throw new Error(`Failed to load ${filename}`);
             const text = await response.text();
