@@ -362,7 +362,7 @@ const App: React.FC = () => {
                 </h1>
                 <div className={`mt-8 border-t-4 pt-6 inline-block ${theme.classes.border}`}>
                   <p className={`text-xl md:text-2xl font-mono tracking-widest uppercase ${theme.classes.text}`}>
-                    Product Director
+                    Product Builder
                   </p>
                 </div>
               </div>
