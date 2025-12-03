@@ -1,7 +1,6 @@
 import { Experience, Education, Publication, Certification, SkillCategory } from './types';
 
 export const CONTACT = {
-  email: "visingh@tcd.ie",
   linkedin: "www.linkedin.com/in/vineetsinghcs",
   location: "County Dublin, Ireland"
 };
