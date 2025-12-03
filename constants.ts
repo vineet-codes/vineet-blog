@@ -9,7 +9,7 @@ export const CONTACT = {
 // To use your own image:
 // 1. Add your photo (e.g., 'vineet.jpg') to the public folder.
 // 2. Change the line below to: export const PROFILE_IMAGE = "./vineet.jpg";
-export const PROFILE_IMAGE = "./vineet.jpg";
+export const PROFILE_IMAGE = "./vineet.png";
 
 export const SUMMARY = `I bridge the gap between complex engineering and user-centric product strategy. As a "crypto nerd," software engineer, and data scientist turned Product Director, I possess a rare bias for shipping tangible utility. Currently, I am architecting the future of the VeChain ecosystem, translating blockchain capabilities into real-world value.`;
 
