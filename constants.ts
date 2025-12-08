@@ -132,3 +132,85 @@ export const CERTIFICATIONS: Certification[] = [
   { name: "Structuring Machine Learning Projects" },
   { name: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization" }
 ];
+
+// Theme Configuration
+export type ThemeKey = 'red' | 'orange' | 'blue' | 'green';
+
+export const THEMES: Record<ThemeKey, any> = {
+  red: {
+    hex: '#dc2626',
+    classes: {
+      text: 'text-red-600',
+      bg: 'bg-red-600',
+      border: 'border-red-600',
+      hoverText: 'hover:text-red-600',
+      hoverBg: 'hover:bg-red-600',
+      hoverBorder: 'hover:border-red-600',
+      groupHoverText: 'group-hover:text-red-600',
+      groupHoverTextLight: 'group-hover:text-red-200',
+      groupHoverTextLighter: 'group-hover:text-red-100',
+      activeNav: 'text-red-600 font-bold pl-4 border-red-600',
+      proseLink: 'prose-a:text-red-600',
+      proseQuote: 'prose-blockquote:border-red-600',
+      placeholder: 'placeholder:text-red-300',
+      ring: 'focus:ring-red-600'
+    }
+  },
+  orange: {
+    hex: '#ea580c',
+    classes: {
+      text: 'text-orange-600',
+      bg: 'bg-orange-600',
+      border: 'border-orange-600',
+      hoverText: 'hover:text-orange-600',
+      hoverBg: 'hover:bg-orange-600',
+      hoverBorder: 'hover:border-orange-600',
+      groupHoverText: 'group-hover:text-orange-600',
+      groupHoverTextLight: 'group-hover:text-orange-200',
+      groupHoverTextLighter: 'group-hover:text-orange-100',
+      activeNav: 'text-orange-600 font-bold pl-4 border-orange-600',
+      proseLink: 'prose-a:text-orange-600',
+      proseQuote: 'prose-blockquote:border-orange-600',
+      placeholder: 'placeholder:text-orange-300',
+      ring: 'focus:ring-orange-600'
+    }
+  },
+  blue: {
+    hex: '#2563eb',
+    classes: {
+      text: 'text-blue-600',
+      bg: 'bg-blue-600',
+      border: 'border-blue-600',
+      hoverText: 'hover:text-blue-600',
+      hoverBg: 'hover:bg-blue-600',
+      hoverBorder: 'hover:border-blue-600',
+      groupHoverText: 'group-hover:text-blue-600',
+      groupHoverTextLight: 'group-hover:text-blue-200',
+      groupHoverTextLighter: 'group-hover:text-blue-100',
+      activeNav: 'text-blue-600 font-bold pl-4 border-blue-600',
+      proseLink: 'prose-a:text-blue-600',
+      proseQuote: 'prose-blockquote:border-blue-600',
+      placeholder: 'placeholder:text-blue-300',
+      ring: 'focus:ring-blue-600'
+    }
+  },
+  green: {
+    hex: '#16a34a',
+    classes: {
+      text: 'text-green-600',
+      bg: 'bg-green-600',
+      border: 'border-green-600',
+      hoverText: 'hover:text-green-600',
+      hoverBg: 'hover:bg-green-600',
+      hoverBorder: 'hover:border-green-600',
+      groupHoverText: 'group-hover:text-green-600',
+      groupHoverTextLight: 'group-hover:text-green-200',
+      groupHoverTextLighter: 'group-hover:text-green-100',
+      activeNav: 'text-green-600 font-bold pl-4 border-green-600',
+      proseLink: 'prose-a:text-green-600',
+      proseQuote: 'prose-blockquote:border-green-600',
+      placeholder: 'placeholder:text-green-300',
+      ring: 'focus:ring-green-600'
+    }
+  }
+};
