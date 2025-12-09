@@ -29,7 +29,8 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
       { threshold: 0.2 }
     );
 
-    document.querySelectorAll('section[id]').forEach((section) => {
+    const sections = document.querySelectorAll('#about, #writing, #experience, #education, #publications');
+    sections.forEach((section) => {
       observer.observe(section);
     });
 
@@ -45,10 +46,17 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
         <div className="animate-[fadeIn_0.5s_ease-out]">
           <Section id="about" className={`pt-16 lg:pt-32 px-6 md:px-16 border-b ${mode.border}`}>
              <div className={`prose prose-xl md:prose-2xl ${mode.prose} max-w-4xl`}>
-               <p className={`${mode.textSub} font-light leading-relaxed indent-12`}>
-                 <span className={`font-bold text-6xl float-left mr-4 mt-[-10px] font-mono ${theme.classes.text}`}>/</span>
-                 {SUMMARY}
-               </p>
+               {SUMMARY.split('\n\n').map((paragraph, index) => (
+                 <p 
+                   key={index} 
+                   className={`${mode.textSub} font-light leading-relaxed ${index === 0 ? 'indent-12' : 'mt-6'}`}
+                 >
+                   {index === 0 && (
+                     <span className={`font-bold text-6xl float-left mr-4 mt-[-10px] font-mono ${theme.classes.text}`}>/</span>
+                   )}
+                   {paragraph}
+                 </p>
+               ))}
              </div>
           </Section>
 
@@ -100,36 +108,65 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
             </div>
           </Section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div id="education" className={`p-6 md:p-16 border-b md:border-b-0 md:border-r ${mode.border}`}>
-               <h2 className={`text-xs font-mono uppercase tracking-widest ${mode.textMuted} mb-12`}>Education</h2>
-               <div className="space-y-12">
+          <Section id="credentials" title="Credentials" className={`px-6 md:px-16 border-b ${mode.border}`}>
+            <div className="space-y-20">
+              
+              {/* 1. EDUCATION: Horizontal Rows */}
+              <div id="education" className="space-y-12">
                 {EDUCATION.map((edu, index) => (
-                  <div key={index}>
-                    <h3 className={`text-lg font-bold ${mode.text} leading-tight`}>{edu.institution}</h3>
-                    <p className={`${mode.textMuted} font-light`}>{edu.degree}</p>
+                  <div key={`edu-${index}`} className={`flex flex-col md:flex-row gap-6 md:gap-12 pb-12 border-b ${mode.border} last:border-0 last:pb-0 group`}>
+                     <div className="md:w-1/4 pt-2">
+                       <span className={`font-mono text-xs uppercase tracking-widest ${theme.classes.text} block mb-1`}>DEG_{String(index + 1).padStart(2, '0')}</span>
+                       <span className={`text-sm ${mode.textMuted}`}>{edu.degree.split(' ').slice(0, 1).join(' ')}</span>
+                     </div>
+                     <div className="md:w-3/4">
+                       <h3 className={`text-3xl md:text-5xl font-black uppercase tracking-tight ${mode.text} mb-2 leading-[0.9] transition-colors ${theme.classes.groupHoverText}`}>
+                         {edu.institution}
+                       </h3>
+                       <p className={`text-xl md:text-2xl font-light ${mode.textSub} mb-4`}>{edu.degree}</p>
+                       {edu.details && <p className={`font-mono text-xs ${mode.textMuted} uppercase tracking-wider`}>{edu.details}</p>}
+                     </div>
                   </div>
                 ))}
-                <div className={`pt-8 border-t ${mode.border}`}>
-                  <h4 className={`text-sm font-bold ${mode.text} mb-4 uppercase tracking-wide`}>Certifications</h4>
-                  <ul className="space-y-2">
-                    {CERTIFICATIONS.map((cert, i) => (<li key={i} className={`text-sm ${mode.textSub} font-mono flex gap-2`}><span className={theme.classes.text}>+</span> {cert.name}</li>))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 pt-8 md:pt-16 border-t border-dashed border-neutral-700">
+                
+                {/* 2. CERTIFICATIONS: Technical List */}
+                <div>
+                  <h3 className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} mb-8`}>/ Certifications</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {CERTIFICATIONS.map((cert, index) => (
+                       <div key={`cert-${index}`} className={`group border ${mode.border} px-4 py-3 transition-all hover:scale-105 ${theme.classes.hoverBorder} hover:shadow-sm cursor-default`}>
+                         <div className="flex items-center gap-3">
+                           <span className={`font-mono text-xs ${theme.classes.text}`}>+</span>
+                           <span className={`font-mono text-xs ${mode.text} uppercase tracking-wide group-hover:text-current`}>
+                             {cert.name}
+                           </span>
+                         </div>
+                       </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3. PUBLICATIONS: Reference List */}
+                <div id="publications">
+                  <h3 className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} mb-8`}>/ Publications</h3>
+                  <ul className="space-y-8">
+                    {PUBLICATIONS.map((pub, index) => (
+                      <li key={`pub-${index}`} className="group">
+                        <span className={`block font-mono text-[10px] ${mode.textMuted} mb-2 opacity-50`}>REF_{String(index + 1).padStart(2, '0')}</span>
+                        <p className={`text-lg md:text-xl font-serif italic ${mode.textSub} leading-relaxed transition-colors ${theme.classes.groupHoverText}`}>
+                          "{pub.title}"
+                        </p>
+                      </li>
+                    ))}
                   </ul>
                 </div>
-               </div>
+
+              </div>
             </div>
-            <div id="publications" className="p-6 md:p-16">
-              <h2 className={`text-xs font-mono uppercase tracking-widest ${mode.textMuted} mb-12`}>Publications</h2>
-              <ul className="space-y-8">
-                {PUBLICATIONS.map((pub, index) => (
-                  <li key={index} className="group">
-                     <span className={`block font-mono text-xs mb-2 ${theme.classes.text}`}>REF_{String(index + 1).padStart(3, '0')}</span>
-                     <p className={`${mode.textSub} transition-colors leading-relaxed font-medium ${theme.classes.groupHoverText}`}>{pub.title}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          </Section>
 
           <footer className={`p-12 border-t ${mode.border} ${mode.footerBg}`}>
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">

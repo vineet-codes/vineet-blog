@@ -78,6 +78,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
     );
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header 
       ref={headerRef}
@@ -110,6 +118,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
               <li key={link.id}>
                 <a 
                   href={`#${link.id}`}
+                  onClick={(e) => handleNavClick(e, link.id)}
                   className={`block py-2 border-b border-transparent hover:pl-4 transition-all duration-300 ${theme.classes.hoverBorder} ${
                     activeSection === link.id ? theme.classes.activeNav : `${mode.textMuted} hover:${mode.text}`
                   }`}

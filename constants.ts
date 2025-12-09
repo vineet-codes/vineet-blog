@@ -11,7 +11,15 @@ export const CONTACT = {
 // 2. Change the line below to: export const PROFILE_IMAGE = "./vineet.jpg";
 export const PROFILE_IMAGE = "./vineet.png";
 
-export const SUMMARY = `I bridge the gap between complex engineering and user-centric product strategy. As a "crypto nerd," software engineer, and data scientist turned Product Director, I possess a rare bias for shipping tangible utility. Currently, I am architecting the future of the VeChain ecosystem, translating blockchain capabilities into real-world value.`;
+export const SUMMARY = `I build things that make people move, think, and stick around.
+
+Started as a nerd playing with blockchains and data for fun. Kept going long after everyone else moved on to the next buzzword. Ten years later, I still like shipping real products more than talking about them.
+
+My edge is simple: I understand the code, the numbers, and the humans using it. I can sit with engineers and argue about architecture, then turn around and rewrite the product story so it actually lands.
+
+I like clean systems, sharp incentives, and feedback loops that punish laziness and reward momentum. Payments, Crypto, fitness, sustainability, behavior design, tokenomics – different arenas, same game.
+
+This site is where I turn experiments into words, and words back into products.`;
 
 // List of markdown files to fetch from public/blog/
 // We use import.meta.glob to find files, then extract just the filenames
@@ -117,6 +125,11 @@ export const EDUCATION: Education[] = [
     institution: "HBX | Harvard Business School",
     degree: "Certificate in Disruptive Strategy",
     details: "Innovation Strategy Formulation and Execution"
+  },
+  {
+    institution: "Indian Institute of Information Technolofy, Design and Manufacturing",
+    degree: "Bachelor of Technology in Electronics and Communication Engineering",
+    details: "4 years undergraduate program"
   }
 ];
 
@@ -127,9 +140,9 @@ export const PUBLICATIONS: Publication[] = [
 ];
 
 export const CERTIFICATIONS: Certification[] = [
-  { name: "Neural Networks and Deep Learning" },
-  { name: "Structuring Machine Learning Projects" },
-  { name: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization" }
+  // { name: "Neural Networks and Deep Learning" },
+  // { name: "Structuring Machine Learning Projects" },
+  // { name: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization" }
 ];
 
 // Theme Configuration
