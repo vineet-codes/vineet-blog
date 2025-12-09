@@ -38,7 +38,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ posts }) => {
          <div className="space-y-0">
            {filteredIndexPosts.map((post, index) => (
              <div key={post.slug} onClick={() => navigate(`/blog/${post.slug}`, { state: { from: 'index' } })} className={`group cursor-pointer relative overflow-hidden border-b ${mode.border}`} style={{ animationDelay: `${index * 50}ms` }}>
-               <div className={`flex flex-col md:flex-row items-baseline md:items-center justify-between py-8 px-4 transition-all duration-300 ${mode.cardHover} ${theme.classes.hoverText} hover:${mode.textInverse}`}>
+               <div className={`flex flex-col md:flex-row items-baseline md:items-center justify-between py-8 px-4 transition-all duration-300 ${mode.cardHover} ${theme.classes.hoverText}`}>
                  <div className="flex flex-col md:flex-row items-baseline md:items-center w-full transition-transform duration-300 group-hover:translate-x-4">
                     <div className={`font-mono text-xs md:text-sm w-32 uppercase ${mode.textMuted} group-hover:text-current opacity-80 mb-2 md:mb-0 flex-shrink-0`}>{post.date}</div>
                     <div className="flex-1 min-w-0 mr-4"><h2 className={`text-2xl md:text-4xl font-bold ${mode.text} group-hover:text-current transition-colors truncate`}>{post.title}</h2></div>

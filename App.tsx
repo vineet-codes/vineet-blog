@@ -26,6 +26,17 @@ const App: React.FC = () => {
             return parseMarkdownFile(filename, text);
           })
         );
+
+        // Sort posts by date (newest first) to handle dynamic ordering
+        loadedPosts.sort((a, b) => {
+          const dateA = new Date(a.date).getTime();
+          const dateB = new Date(b.date).getTime();
+          // Handle invalid dates safely
+          if (isNaN(dateA)) return 1; 
+          if (isNaN(dateB)) return -1;
+          return dateB - dateA;
+        });
+
         setPosts(loadedPosts);
       } catch (error) {
         console.error("Error loading blog posts:", error);

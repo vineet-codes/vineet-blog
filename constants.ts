@@ -14,13 +14,12 @@ export const PROFILE_IMAGE = "./vineet.png";
 export const SUMMARY = `I bridge the gap between complex engineering and user-centric product strategy. As a "crypto nerd," software engineer, and data scientist turned Product Director, I possess a rare bias for shipping tangible utility. Currently, I am architecting the future of the VeChain ecosystem, translating blockchain capabilities into real-world value.`;
 
 // List of markdown files to fetch from public/blog/
-export const BLOG_FILES = [
-  'web3-ux-gap.md',
-  'sustainability-gamified.md',
-  'data-science-pm.md',
-  'creative-coding.md',
-  'minimalism-in-tech.md'
-];
+// We use import.meta.glob to find files, then extract just the filenames
+const blogModules = import.meta.glob('/public/blog/*.md');
+
+export const BLOG_FILES = Object.keys(blogModules)
+  .map((path) => path.split('/').pop() || '')
+  .filter(Boolean);
 
 export const EXPERIENCE: Experience[] = [
   {
