@@ -13,7 +13,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
   const { mode, theme } = useTheme();
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [activeSection, setActiveSection] = useState<string>('about');
   const navigate = useNavigate();
 
   // Intersection Observer
@@ -26,7 +26,10 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
           }
         });
       },
-      { threshold: 0.2 }
+      { 
+        threshold: 0.1,
+        rootMargin: '-20% 0px -50% 0px' 
+      }
     );
 
     const sections = document.querySelectorAll('#about, #writing, #experience, #education, #publications');
