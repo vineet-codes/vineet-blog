@@ -140,9 +140,9 @@ export const PUBLICATIONS: Publication[] = [
 ];
 
 export const CERTIFICATIONS: Certification[] = [
-  // { name: "Neural Networks and Deep Learning" },
-  // { name: "Structuring Machine Learning Projects" },
-  // { name: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization" }
+  { name: "Neural Networks and Deep Learning" },
+  { name: "Structuring Machine Learning Projects" },
+  { name: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization" }
 ];
 
 // Theme Configuration
