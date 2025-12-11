@@ -132,7 +132,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
 
         {/* Mobile/Tablet Profile Image Fallback */}
         <div className="lg:hidden mb-8 pointer-events-auto">
-          <img src={PROFILE_IMAGE} className="w-full h-96 object-cover grayscale contrast-125" alt="Vineet Singh" />
+          <img src={PROFILE_IMAGE} className="w-full h-96 object-cover contrast-125" alt="Vineet Singh" />
         </div>
 
         <div className={`text-xs font-mono uppercase tracking-widest ${mode.textMuted} flex flex-col gap-2 relative z-20 pointer-events-auto`}>
