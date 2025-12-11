@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { marked } from 'marked';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import { useTheme } from '../context/ThemeContext';
 import { BlogPost } from '../types';
 
@@ -95,14 +95,7 @@ const Post: React.FC<PostProps> = ({ posts, loadingPosts }) => {
            </div>
         </div>
 
-        <div 
-          className={`prose ${mode.prose} prose-lg md:prose-xl max-w-none 
-          prose-headings:font-bold prose-headings:tracking-tight
-          prose-p:font-serif prose-p:leading-relaxed
-          prose-a:no-underline hover:prose-a:underline ${theme.classes.proseLink}
-          prose-blockquote:border-l-4 prose-blockquote:p-6 prose-blockquote:italic ${mode.quoteBg} ${theme.classes.proseQuote}`}
-          dangerouslySetInnerHTML={{ __html: marked.parse(selectedPost.content) }} 
-        />
+        <MarkdownRenderer content={selectedPost.content} />
       </div>
       
       <div className={`w-full ${mode.footerBg} border-t ${mode.border} py-16 px-6`}>
