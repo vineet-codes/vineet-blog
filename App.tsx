@@ -64,7 +64,7 @@ const App: React.FC = () => {
       <div className="fixed top-4 right-4 z-50 flex flex-col gap-4 items-end">
         
         {/* Color Picker */}
-        <div className={`flex gap-2 p-2 ${isDarkMode ? 'bg-stone-900/90 border-stone-800' : 'bg-stone-50/90 border-stone-200'} backdrop-blur rounded-full border shadow-sm`}>
+        <div className={`flex flex-col-reverse md:flex-row gap-2 p-2 ${isDarkMode ? 'bg-stone-900/90 border-stone-800' : 'bg-stone-50/90 border-stone-200'} backdrop-blur rounded-full border shadow-sm`}>
           {Object.keys(THEMES).map((key) => (
             <button
               key={key}
@@ -74,7 +74,7 @@ const App: React.FC = () => {
               aria-label={`Select ${key} theme`}
             />
           ))}
-          <div className="w-px bg-stone-400/20 mx-1"></div>
+          <div className="h-px w-full md:w-px md:h-4 bg-stone-400/20 my-1 md:my-0 md:mx-1"></div>
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
             className={`w-4 h-4 flex items-center justify-center rounded-full transition-colors hover:text-stone-500 ${mode.textSub}`}
