@@ -67,7 +67,11 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
             <div className="px-6 md:px-16 py-12 md:py-20">
               <div className={`flex items-end justify-between mb-12 border-b-4 ${mode.borderStrong} pb-4`}>
                 <h2 className={`text-4xl md:text-6xl font-black ${mode.text} uppercase tracking-tight`}>Log</h2>
-                <Link to="/index" className={`font-mono text-xs uppercase tracking-widest mb-2 hover:underline ${theme.classes.text}`}>Index [View All]</Link>
+                <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2 font-mono text-xs uppercase tracking-widest">
+                  <Link to="/index" className={`hover:underline ${theme.classes.text}`}>Index [View All]</Link>
+                  <span className={`${mode.textMuted}`}>/</span>
+                  <Link to="/travel" className={`hover:underline ${theme.classes.text}`}>Map [Terra Incognita]</Link>
+                </div>
               </div>
               <div className="flex flex-col">
                 {loadingPosts ? <div className={`h-20 ${mode.quoteBg} animate-pulse w-full`}></div> : posts.slice(0, 3).map((post) => (

@@ -36,3 +36,12 @@ export interface BlogPost {
   tags: string[];
   content: string; // The markdown content
 }
+
+export interface TravelEntry {
+  year: string;
+  city: string;
+  country: string;
+  lat: number;
+  lng: number;
+  tags: string[];
+}

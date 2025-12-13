@@ -7,6 +7,7 @@ import { useTheme } from './context/ThemeContext';
 import Home from './pages/Home';
 import BlogIndex from './pages/BlogIndex';
 import Post from './pages/Post';
+import TravelLog from './pages/TravelLog';
 
 const App: React.FC = () => {
   const { activeThemeKey, setActiveThemeKey, isDarkMode, setIsDarkMode, theme, mode } = useTheme();
@@ -95,6 +96,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home posts={posts} loadingPosts={loadingPosts} />} />
           <Route path="/index" element={<BlogIndex posts={posts} />} />
+          <Route path="/travel" element={<TravelLog />} />
           <Route path="/blog/:slug" element={<Post posts={posts} loadingPosts={loadingPosts} />} />
         </Routes>
       </HashRouter>
