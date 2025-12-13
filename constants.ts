@@ -146,11 +146,11 @@ export const CERTIFICATIONS: Certification[] = [
 ];
 
 export const TRAVEL_DATA: TravelEntry[] = [
-  { year: "2023", city: "Reykjavík", country: "Iceland", lat: 64.1466, lng: -21.9426, tags: ["Geothermal", "Brutalist"] },
-  { year: "2023", city: "Kyoto", country: "Japan", lat: 35.0116, lng: 135.7681, tags: ["Heritage", "Minimalism"] },
-  { year: "2022", city: "Berlin", country: "Germany", lat: 52.5200, lng: 13.4050, tags: ["Techno", "Industrial"] },
-  { year: "2021", city: "Medellín", country: "Colombia", lat: 6.2476, lng: -75.5658, tags: ["Urbanism", "Transformation"] },
-  { year: "2020", city: "Copenhagen", country: "Denmark", lat: 55.6761, lng: 12.5683, tags: ["Design", "Systems"] }
+  { year: "2025", city: "Kyoto", country: "Japan", lat: "35.0116° N", lng: "135.7681° E", tags: ["Summer", "Greenery", "Wagyu", "Shinkansen"] },
+  { year: "2025", city: "Tokyo", country: "Japan", lat: "35.6764° N", lng: "139.6500° E", tags: ["Summer", "Whiskey and Wagyu"] },
+  { year: "2025", city: "Singapore", country: "Singapore", lat: "1°17 N", lng: "103.85° E", tags: ["Summer", "humidity and friends"] },
+  { year: "2025", city: "Cascais", country: "Portugal", lat: "38.7237° N", lng: "9.4006° W", tags: ["Summer", "seaside"] },
+  { year: "2025", city: "Dublin", country: "Ireland", lat: "53.3498° N", lng: "6.2603° W", tags: ["Summer", "Friends"] },
 ];
 
 // Theme Configuration

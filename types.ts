@@ -41,7 +41,7 @@ export interface TravelEntry {
   year: string;
   city: string;
   country: string;
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
   tags: string[];
 }

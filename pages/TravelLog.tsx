@@ -21,6 +21,33 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
+// Helper to parse coordinate string to number
+const parseCoord = (coord: string): number => {
+  const match = coord.match(/([\d.]+)[°\s]*([NSEW])/i);
+  if (match) {
+    let val = parseFloat(match[1]);
+    const dir = match[2].toUpperCase();
+    if (dir === 'S' || dir === 'W') val = -val;
+    return val;
+  }
+  // Try parsing directly if it's just a number string
+  const num = parseFloat(coord);
+  return isNaN(num) ? 0 : num;
+};
+
+// Helper component to fix map rendering issues (grey tiles)
+const MapFix = () => {
+  const map = useMap();
+  useEffect(() => {
+    // Invalidate size after a slight delay to account for any entry animations
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [map]);
+  return null;
+};
+
 // Helper component to handle map view changes
 const MapUpdater: React.FC<{ center: [number, number] | null; zoom?: number }> = ({ center, zoom }) => {
   const map = useMap();
@@ -47,7 +74,9 @@ const TravelLog: React.FC = () => {
   });
 
   const handleLocationClick = (entry: TravelEntry) => {
-    setSelectedLocation({ center: [entry.lat, entry.lng], zoom: 13 });
+    const lat = parseCoord(entry.lat);
+    const lng = parseCoord(entry.lng);
+    setSelectedLocation({ center: [lat, lng], zoom: 13 });
     setView('map');
   };
 
@@ -163,8 +192,8 @@ const TravelLog: React.FC = () => {
                              <div className={`md:col-span-5 p-4 flex flex-col justify-center gap-4`}>
                                  <div className="flex justify-between items-center w-full">
                                     <div className="font-mono text-xs opacity-60">
-                                        <div>LAT: {entry.lat.toFixed(4)}° N</div>
-                                        <div>LNG: {entry.lng.toFixed(4)}° {entry.lng < 0 ? 'W' : 'E'}</div>
+                                        <div>LAT: {entry.lat}</div>
+                                        <div>LNG: {entry.lng}</div>
                                     </div>
                                     <div className="hidden md:block">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transform -rotate-45 opacity-0 group-hover:opacity-100 transition-all duration-300 ${theme.classes.text}`}>
@@ -193,6 +222,7 @@ const TravelLog: React.FC = () => {
                     scrollWheelZoom={true} 
                     style={{ height: '100%', width: '100%', background: '#1c1917' }}
                 >
+                    <MapFix />
                     {selectedLocation && (
                         <MapUpdater center={selectedLocation.center} zoom={selectedLocation.zoom} />
                     )}
@@ -200,10 +230,13 @@ const TravelLog: React.FC = () => {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                     />
-                    {TRAVEL_DATA.map((entry) => (
+                    {TRAVEL_DATA.map((entry) => {
+                        const lat = parseCoord(entry.lat);
+                        const lng = parseCoord(entry.lng);
+                        return (
                         <Marker 
                             key={`${entry.city}-${entry.year}`} 
-                            position={[entry.lat, entry.lng]} 
+                            position={[lat, lng]} 
                             icon={customIcon}
                         >
                             <Popup className="custom-popup">
@@ -213,7 +246,8 @@ const TravelLog: React.FC = () => {
                                 </div>
                             </Popup>
                         </Marker>
-                    ))}
+                        );
+                    })}
                 </MapContainer>
                 
                 {/* Map Overlay Info */}

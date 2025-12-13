@@ -14,6 +14,11 @@ A minimalist, Swiss-design inspired portfolio and blog built with **React 19**, 
 *   **Interactive Elements**:
     *   **Magnetic Hero**: Desktop sidebar that tracks mouse movement for a subtle parallax effect on the profile image.
     *   **Custom Navigation**: Smooth scrolling and active section highlighting.
+*   **Travel Log ("Terra Incognita")**:
+    *   **Brutalist Design**: Interactive "Index" vs "Map" view switcher with technical, monochromatic aesthetics.
+    *   **Interactive Map**: Powered by `react-leaflet`, featuring custom minimal markers and smooth fly-to animations.
+    *   **List View**: Grid-based layout with reverse chronological ordering and dynamic ID generation.
+    *   **Responsive UX**: Custom mobile-specific navigation controls (bottom floating switcher) vs desktop controls (header embedded).
 *   **Markdown Blog Engine**:
     *   Renders blog posts directly from Markdown (`.md`) files located in `public/blog/`.
     *   Supports metadata parsing (frontmatter-like behavior) and raw HTML rendering.
