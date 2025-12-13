@@ -28,11 +28,11 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
       },
       { 
         threshold: 0.1,
-        rootMargin: '-20% 0px -50% 0px' 
+        rootMargin: '-10% 0px -45% 0px' 
       }
     );
 
-    const sections = document.querySelectorAll('#about, #writing, #experience, #education, #publications');
+    const sections = document.querySelectorAll('#about, #writing, #experience, #education, #certifications, #publications');
     sections.forEach((section) => {
       observer.observe(section);
     });
@@ -133,17 +133,21 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 pt-8 md:pt-16 border-t border-dashed border-neutral-700">
+              <div className="space-y-20 pt-16 border-t border-dashed border-neutral-700">
                 
-                {/* 2. CERTIFICATIONS: Technical List */}
-                <div>
-                  <h3 className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} mb-8`}>/ Certifications</h3>
-                  <div className="flex flex-wrap gap-3">
+                {/* 2. CERTIFICATIONS: System Log Style */}
+                <div id="certifications">
+                  <h3 className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} mb-12`}>/ Certifications</h3>
+                  <div className="space-y-4">
                     {CERTIFICATIONS.map((cert, index) => (
-                       <div key={`cert-${index}`} className={`group border ${mode.border} px-4 py-3 transition-all hover:scale-105 ${theme.classes.hoverBorder} hover:shadow-sm cursor-default`}>
-                         <div className="flex items-center gap-3">
-                           <span className={`font-mono text-xs ${theme.classes.text}`}>+</span>
-                           <span className={`font-mono text-xs ${mode.text} uppercase tracking-wide group-hover:text-current`}>
+                       <div key={`cert-${index}`} className={`group flex flex-col md:flex-row gap-4 md:gap-12 items-baseline p-4 -mx-4 hover:bg-neutral-800/30 transition-colors duration-200 rounded-sm cursor-default`}>
+                         <div className="md:w-1/4">
+                           <span className={`font-mono text-xs ${theme.classes.text} opacity-60 group-hover:opacity-100 transition-opacity`}>
+                             0x{String(index + 1).padStart(2, '0')} :: OK
+                           </span>
+                         </div>
+                         <div className="md:w-3/4">
+                           <span className={`font-mono text-lg md:text-xl font-bold ${mode.text} uppercase tracking-tight group-hover:translate-x-2 transition-transform duration-300 block`}>
                              {cert.name}
                            </span>
                          </div>
@@ -152,19 +156,36 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
                   </div>
                 </div>
 
-                {/* 3. PUBLICATIONS: Reference List */}
+                {/* 3. PUBLICATIONS: Redacted Archive Style */}
                 <div id="publications">
-                  <h3 className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} mb-8`}>/ Publications</h3>
-                  <ul className="space-y-8">
+                  <h3 className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} mb-12`}>/ Scientific Publications</h3>
+                  <div className="space-y-12">
                     {PUBLICATIONS.map((pub, index) => (
-                      <li key={`pub-${index}`} className="group">
-                        <span className={`block font-mono text-[10px] ${mode.textMuted} mb-2 opacity-50`}>REF_{String(index + 1).padStart(2, '0')}</span>
-                        <p className={`text-lg md:text-xl font-serif italic ${mode.textSub} leading-relaxed transition-colors ${theme.classes.groupHoverText}`}>
-                          "{pub.title}"
-                        </p>
-                      </li>
+                      <div key={`pub-${index}`} className="group flex flex-col md:flex-row gap-6 md:gap-12 items-baseline">
+                        <div className="md:w-1/4">
+                          <span className={`font-mono text-[10px] ${mode.textMuted} border border-neutral-700 px-2 py-1 rounded-full group-hover:border-current transition-colors`}>
+                            REF_{String(index + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <div className="md:w-3/4">
+                          {pub.url ? (
+                            <a 
+                              href={pub.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`block text-2xl md:text-4xl font-serif italic ${mode.textSub} leading-tight transition-colors duration-300 ${theme.classes.groupHoverText}`}
+                            >
+                              "{pub.title}"
+                            </a>
+                          ) : (
+                            <p className={`text-2xl md:text-4xl font-serif italic ${mode.textSub} leading-tight transition-colors duration-300 ${theme.classes.groupHoverText}`}>
+                              "{pub.title}"
+                            </p>
+                          )}
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
               </div>

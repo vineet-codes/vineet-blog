@@ -134,9 +134,9 @@ export const EDUCATION: Education[] = [
 ];
 
 export const PUBLICATIONS: Publication[] = [
-  { title: "Cuckoo search algorithm and wind driven optimization based study of satellite image segmentation for multilevel thresholding using Kapur's entropy" },
-  { title: "Performance of swarm based optimization techniques for designing digital FIR filter: A comparative study" },
-  { title: "Design of two-channel filter bank using nature inspired optimization based fractional derivative constraints" }
+  { title: "Cuckoo search algorithm and wind driven optimization based study of satellite image segmentation for multilevel thresholding using Kapur's entropy", url : "https://www.sciencedirect.com/science/article/abs/pii/S0957417413008919" },
+  { title: "Performance of swarm based optimization techniques for designing digital FIR filter: A comparative study", url :"https://www.sciencedirect.com/science/article/pii/S2215098615303785" },
+  { title: "Design of two-channel filter bank using nature inspired optimization based fractional derivative constraints", url: "https://www.sciencedirect.com/science/article/abs/pii/S0019057814001256?via%3Dihub" }
 ];
 
 export const CERTIFICATIONS: Certification[] = [

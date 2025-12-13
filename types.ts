@@ -15,6 +15,7 @@ export interface Education {
 
 export interface Publication {
   title: string;
+  url?: string;
 }
 
 export interface Certification {

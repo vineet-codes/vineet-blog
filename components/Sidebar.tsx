@@ -32,6 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
     { id: 'writing', label: 'Writing' },
     { id: 'experience', label: 'Experience' },
     { id: 'education', label: 'Education' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'publications', label: 'Publications' },
   ];
 
