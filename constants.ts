@@ -122,11 +122,6 @@ export const EDUCATION: Education[] = [
     details: "Specialization in Mobile and Ubiquitous Computing"
   },
   {
-    institution: "HBX | Harvard Business School",
-    degree: "Certificate in Disruptive Strategy",
-    details: "Innovation Strategy Formulation and Execution"
-  },
-  {
     institution: "Indian Institute of Information Technolofy, Design and Manufacturing",
     degree: "Bachelor of Technology in Electronics and Communication Engineering",
     details: "4 years undergraduate program"
@@ -140,17 +135,28 @@ export const PUBLICATIONS: Publication[] = [
 ];
 
 export const CERTIFICATIONS: Certification[] = [
+  { name: "Innovation Strategy Formulation and Execution, Disruptive Strategy, HBX | Harvard Business School" },
   { name: "Neural Networks and Deep Learning" },
   { name: "Structuring Machine Learning Projects" },
   { name: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization" }
 ];
 
 export const TRAVEL_DATA: TravelEntry[] = [
+  { year: "2024", city: "Jacksonville", country: "USA", lat: "30.3298° N", lng: "81.6592° W", tags: ["Summer", "Florida", "UFC", "Real life Hangover"] },
+  { year: "2024", city: "Boston", country: "USA", lat: "42.3555° N", lng: "71.0565° W", tags: ["Harvard", "MIT", "Hackathon", "Inspiration"] },
+  { year: "2024", city: "Austin", country: "USA", lat: "30.2672° N", lng: "97.7431° W", tags: ["Summer", "Consensus", "Ribs", "Cocktails"] },
+  { year: "2024", city: "San Francisco", country: "USA", lat: "37.7749° N", lng: "122.4194° W", tags: ["Summer", "Golden Gate", "Palo Alto", "Waymo"] },
+  { year: "2024", city: "Nice", country: "France", lat: "43.7102° N", lng: "7.2620° E", tags: ["Summer", "Beaches", "Wine"] },
+  { year: "2024", city: "Milan", country: "Italy", lat: "45.4685° N", lng: "9.1824° E", tags: ["Summer", "Tiramisu", "Bosco Verticale", "Wine", "Steakhouse"] },
+  { year: "2024", city: "Dubai", country: "United Arab Emirates", lat: "25.276987° N", lng: "55.296233° E", tags: ["Winter", "New Beginings", "Habibi"] },
+  { year: "2024", city: "Madrid", country: "Spain", lat: "40.4167° N", lng: "3.7033° W", tags: ["Winter", "Oscar", "Wine", "Nightclub"] },
+  { year: "2025", city: "Osaka", country: "Japan", lat: "34.6937° N", lng: "135.5023° E", tags: ["Summer", "Dotonbori", "sake", "sumo"] },
   { year: "2025", city: "Kyoto", country: "Japan", lat: "35.0116° N", lng: "135.7681° E", tags: ["Summer", "Greenery", "Wagyu", "Shinkansen"] },
   { year: "2025", city: "Tokyo", country: "Japan", lat: "35.6764° N", lng: "139.6500° E", tags: ["Summer", "Whiskey and Wagyu"] },
   { year: "2025", city: "Singapore", country: "Singapore", lat: "1°17 N", lng: "103.85° E", tags: ["Summer", "humidity and friends"] },
   { year: "2025", city: "Cascais", country: "Portugal", lat: "38.7237° N", lng: "9.4006° W", tags: ["Summer", "seaside"] },
   { year: "2025", city: "Dublin", country: "Ireland", lat: "53.3498° N", lng: "6.2603° W", tags: ["Summer", "Friends"] },
+  { year: "2025", city: "Abu Dhabi", country: "United Arab Emirates", lat: "24.4539° N", lng: "54.3773° E", tags: ["Winter", "Abu Dhabi", "Ferrari World", "Yas Island"] },
 ];
 
 // Theme Configuration

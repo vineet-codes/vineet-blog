@@ -1,19 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { THEMES, ThemeKey, BLOG_FILES } from './constants';
 import { BlogPost } from './types';
 import { parseMarkdownFile } from './utils/markdown';
 import { useTheme } from './context/ThemeContext';
-import Home from './pages/Home';
-import BlogIndex from './pages/BlogIndex';
-import Post from './pages/Post';
-import TravelLog from './pages/TravelLog';
+import { LoadingScreen } from './components/LoadingScreen';
+
+const Home = React.lazy(() => import('./pages/Home'));
+const BlogIndex = React.lazy(() => import('./pages/BlogIndex'));
+const Post = React.lazy(() => import('./pages/Post'));
+const TravelLog = React.lazy(() => import('./pages/TravelLog'));
 
 const App: React.FC = () => {
   const { activeThemeKey, setActiveThemeKey, isDarkMode, setIsDarkMode, theme, mode } = useTheme();
   
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  // Initial Splash Screen Timer & Preloading
+  useEffect(() => {
+    // Preload lazy components to minimize Suspense fallback
+    import('./pages/Home');
+    import('./pages/BlogIndex');
+    import('./pages/TravelLog');
+    import('./pages/Post');
+
+    // Start fade out at 2.5s
+    const fadeTimer = setTimeout(() => {
+      setFadeOut(true);
+    }, 2500);
+
+    // Remove splash at 3.2s (giving time for fade transition)
+    const removeTimer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3200);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
+  }, []);
 
   // Fetch posts
   useEffect(() => {
@@ -92,14 +120,20 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Home posts={posts} loadingPosts={loadingPosts} />} />
-          <Route path="/index" element={<BlogIndex posts={posts} />} />
-          <Route path="/travel" element={<TravelLog />} />
-          <Route path="/blog/:slug" element={<Post posts={posts} loadingPosts={loadingPosts} />} />
-        </Routes>
-      </HashRouter>
+      {showSplash ? (
+        <LoadingScreen fadeOut={fadeOut} />
+      ) : (
+        <HashRouter>
+          <Suspense fallback={<LoadingScreen isFallback />}>
+            <Routes>
+              <Route path="/" element={<Home posts={posts} loadingPosts={loadingPosts} />} />
+              <Route path="/index" element={<BlogIndex posts={posts} />} />
+              <Route path="/travel" element={<TravelLog />} />
+              <Route path="/blog/:slug" element={<Post posts={posts} loadingPosts={loadingPosts} />} />
+            </Routes>
+          </Suspense>
+        </HashRouter>
+      )}
     </div>
   );
 };
