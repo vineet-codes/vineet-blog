@@ -78,7 +78,7 @@ const TravelLog: React.FC = () => {
           </div>
         </div>
         
-        <div className="flex flex-col items-end gap-2">
+        <div className="hidden md:flex flex-col items-end gap-2">
             <div className={`font-mono text-[10px] uppercase tracking-widest ${mode.textMuted} mb-1`}>
                 [View Mode]
             </div>
@@ -98,6 +98,27 @@ const TravelLog: React.FC = () => {
             </div>
         </div>
       </header>
+      
+      {/* Mobile Switcher - Fixed Bottom */}
+      <div className="md:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-2">
+            <div className={`font-mono text-[10px] uppercase tracking-widest ${mode.textMuted} bg-black/80 px-2 py-0.5 rounded backdrop-blur-md border ${mode.border}`}>
+                [View Mode]
+            </div>
+            <div className={`flex border ${mode.border} rounded-sm overflow-hidden shadow-2xl ${mode.bg}`}>
+                <button 
+                    onClick={() => setView('index')}
+                    className={`px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${view === 'index' ? theme.classes.bg + ' text-white' : 'hover:bg-stone-800'}`}
+                >
+                    Index
+                </button>
+                <button 
+                    onClick={handleMapSwitch}
+                    className={`px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${view === 'map' ? theme.classes.bg + ' text-white' : 'hover:bg-stone-800'}`}
+                >
+                    Map
+                </button>
+            </div>
+      </div>
 
       {/* Main Content */}
       <main className="pt-48 md:pt-56 pb-20 px-0">
