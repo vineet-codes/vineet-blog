@@ -63,7 +63,7 @@ const MapUpdater: React.FC<{ center: [number, number] | null; zoom?: number }> =
 
 const TravelLog: React.FC = () => {
   const { mode, theme } = useTheme();
-  const [view, setView] = useState<'index' | 'map'>('index');
+  const [view, setView] = useState<'index' | 'map'>('map');
   const [selectedLocation, setSelectedLocation] = useState<{ center: [number, number]; zoom: number } | null>(null);
 
   const customIcon = new L.DivIcon({
