@@ -27,15 +27,15 @@ const App: React.FC = () => {
     import('./pages/TravelLog');
     import('./pages/Post');
 
-    // Start fade out at 2.5s
+    // Start fade out at 2.8s (match animation duration)
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
-    }, 2500);
+    }, 2800);
 
-    // Remove splash at 3.2s (giving time for fade transition)
+    // Remove splash at 3.5s (giving time for fade transition)
     const removeTimer = setTimeout(() => {
       setShowSplash(false);
-    }, 3200);
+    }, 3500);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -90,7 +90,7 @@ const App: React.FC = () => {
         <LoadingScreen fadeOut={fadeOut} />
       ) : (
         <HashRouter>
-          <Suspense fallback={<LoadingScreen isFallback />}>
+          <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Home posts={posts} loadingPosts={false} />} />
               <Route path="/index" element={<BlogIndex posts={posts} />} />

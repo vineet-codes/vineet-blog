@@ -200,9 +200,9 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                <p className={`text-xs font-mono ${mode.textMuted} uppercase`}>© {new Date().getFullYear()} Vineet Singh</p>
                <p className={`text-xs font-mono ${mode.textMuted} uppercase flex items-center gap-2`}>
-                 <span className="font-devanagari">भारत</span>
+                 <span className="font-devanagari opacity-60">भारत</span>
                  <span className={theme.classes.text}>→</span>
-                 <span>Éire</span>
+                 <span>Ireland</span>
                </p>
             </div>
           </footer>
