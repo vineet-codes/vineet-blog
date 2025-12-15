@@ -30,11 +30,23 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
             {children}
           </h3>
         ),
-        p: ({ children }) => (
-          <p className={`text-lg md:text-xl font-serif leading-relaxed mb-6 ${mode.text} opacity-90`}>
-            {children}
-          </p>
-        ),
+        p: ({ children, node }) => {
+          // Check if the paragraph contains only an image (which renders as <figure>)
+          // If so, don't wrap it in <p> to avoid invalid HTML nesting
+          const hasOnlyImage = node?.children?.length === 1 && 
+            node.children[0].type === 'element' && 
+            node.children[0].tagName === 'img';
+          
+          if (hasOnlyImage) {
+            return <>{children}</>;
+          }
+          
+          return (
+            <p className={`text-lg md:text-xl font-serif leading-relaxed mb-6 ${mode.text} opacity-90`}>
+              {children}
+            </p>
+          );
+        },
         
         // Lists
         ul: ({ children }) => (
