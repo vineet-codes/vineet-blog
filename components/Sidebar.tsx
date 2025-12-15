@@ -105,6 +105,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
             <span>Vineet</span>
             <span>Singh</span>
           </h1>
+          {/* Heritage name reveal - Devanagari → Gaelic */}
+          <span 
+            className={`text-sm md:text-base font-light tracking-wide mt-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${mode.textMuted}`}
+          >
+            <span className="font-devanagari">विनीत सिंह</span>
+            <span className={theme.classes.text}>→</span>
+            <span>Uinéid Singg</span>
+          </span>
           <div className={`mt-8 border-t-4 pt-6 inline-block ${theme.classes.border}`}>
             <p className={`text-xl md:text-2xl font-mono tracking-widest uppercase ${theme.classes.text}`}>
               Product Builder

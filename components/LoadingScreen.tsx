@@ -9,10 +9,11 @@ interface LoadingScreenProps {
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ fadeOut = false, isFallback = false }) => {
   const { theme, mode } = useTheme();
   const [progress, setProgress] = useState(0);
-  const [displayText, setDisplayText] = useState('');
+  const [gaelicText, setGaelicText] = useState('');
   
-  const targetText = isFallback ? "LOADING DATA..." : "INITIALIZING SYSTEM...";
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+  // Target text for Gaelic decoder
+  const gaelicTarget = "DIA DHUIT";
+  const latinChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   // Progress animation (Only for initial splash)
   useEffect(() => {
@@ -35,22 +36,28 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ fadeOut = false, i
     return () => clearInterval(timer);
   }, [isFallback]);
 
-  // Decoder text effect
+  // Decoder text effect for Gaelic part only
   useEffect(() => {
+    if (isFallback) {
+      setGaelicText("LOADING...");
+      return;
+    }
+    
     let iteration = 0;
     const interval = setInterval(() => {
-      setDisplayText(targetText
+      setGaelicText(gaelicTarget
         .split("")
         .map((letter, index) => {
           if (index < iteration) {
             return letter;
           }
-          return chars[Math.floor(Math.random() * chars.length)];
+          if (letter === ' ') return ' ';
+          return latinChars[Math.floor(Math.random() * latinChars.length)];
         })
         .join("")
       );
 
-      if (iteration >= targetText.length) {
+      if (iteration >= gaelicTarget.length) {
         clearInterval(interval);
       }
       
@@ -58,30 +65,36 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ fadeOut = false, i
     }, 30);
 
     return () => clearInterval(interval);
-  }, [targetText]);
+  }, [isFallback]);
 
   return (
     <div 
       className={`fixed inset-0 z-[100] flex flex-col items-center justify-center ${mode.bg} ${mode.text} transition-opacity duration-700 ease-out ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
     >
-      {/* Percentage Counter - Hide in fallback mode to avoid confusing reset */}
+      {/* Heritage Greeting - Namaste → Dia Dhuit (MAIN HERO) */}
+      <div className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight ${theme.classes.text} flex items-center gap-4 md:gap-6 select-none`}>
+        {!isFallback && (
+          <>
+            <span className="font-devanagari">नमस्ते</span>
+            <span className="opacity-60">→</span>
+          </>
+        )}
+        <span className="font-mono uppercase">{gaelicText}</span>
+      </div>
+
+      {/* Percentage Counter - Secondary, muted */}
       {!isFallback && (
-        <div className={`text-9xl md:text-[12rem] font-black tracking-tighter leading-none select-none ${theme.classes.text}`}>
+        <div className={`mt-6 text-2xl md:text-4xl font-mono tracking-widest leading-none select-none ${mode.textMuted}`}>
           {progress.toString().padStart(2, '0')}%
         </div>
       )}
 
       {/* Fallback Loader Indicator */}
       {isFallback && (
-        <div className={`text-6xl md:text-8xl font-black tracking-tighter animate-pulse ${theme.classes.text}`}>
+        <div className={`mt-6 text-2xl md:text-4xl font-mono tracking-widest animate-pulse ${mode.textMuted}`}>
           ...
         </div>
       )}
-
-      {/* Decoder Text */}
-      <div className={`mt-8 font-mono text-sm md:text-base tracking-[0.5em] uppercase ${mode.textMuted}`}>
-        {displayText}
-      </div>
 
       {/* Progress Bar Line */}
       {!isFallback && (
