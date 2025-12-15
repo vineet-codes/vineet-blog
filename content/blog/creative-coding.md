@@ -13,3 +13,4 @@ Just as the Swiss Style of design relies on grids, mathematics, and strict rules
 > "Clean code reads like well-written prose." - Robert C. Martin
 
 In my work, whether optimizing a neural network or refining a UI interaction, I strive for that moment where complexity collapses into simplicity. That is the art of code.
+

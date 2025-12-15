@@ -15,3 +15,4 @@ This isn't just a loyalty program; it's a closed-loop economic model where enter
 > "The product challenge here is balancing the token economy to prevent inflation while maintaining high engagement."
 
 We built a dual-token system to separate governance from utility, ensuring that the incentives remain aligned with long-term ecological goals rather than short-term speculation.
+

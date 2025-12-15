@@ -1,21 +1,21 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { THEMES, ThemeKey, BLOG_FILES } from './constants';
-import { BlogPost } from './types';
-import { parseMarkdownFile } from './utils/markdown';
+import { THEMES, ThemeKey } from './constants';
 import { useTheme } from './context/ThemeContext';
 import { LoadingScreen } from './components/LoadingScreen';
+import { getAllPosts } from './src/lib/content';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const BlogIndex = React.lazy(() => import('./pages/BlogIndex'));
 const Post = React.lazy(() => import('./pages/Post'));
 const TravelLog = React.lazy(() => import('./pages/TravelLog'));
 
+// Get posts at module load time (they're pre-built)
+const posts = getAllPosts();
+
 const App: React.FC = () => {
   const { activeThemeKey, setActiveThemeKey, isDarkMode, setIsDarkMode, theme, mode } = useTheme();
   
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loadingPosts, setLoadingPosts] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
@@ -41,40 +41,6 @@ const App: React.FC = () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
     };
-  }, []);
-
-  // Fetch posts
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const loadedPosts = await Promise.all(
-          BLOG_FILES.map(async (filename) => {
-            const response = await fetch(`./blog/${filename}`);
-            if (!response.ok) throw new Error(`Failed to load ${filename}`);
-            const text = await response.text();
-            return parseMarkdownFile(filename, text);
-          })
-        );
-
-        // Sort posts by date (newest first) to handle dynamic ordering
-        loadedPosts.sort((a, b) => {
-          const dateA = new Date(a.date).getTime();
-          const dateB = new Date(b.date).getTime();
-          // Handle invalid dates safely
-          if (isNaN(dateA)) return 1; 
-          if (isNaN(dateB)) return -1;
-          return dateB - dateA;
-        });
-
-        setPosts(loadedPosts);
-      } catch (error) {
-        console.error("Error loading blog posts:", error);
-      } finally {
-        setLoadingPosts(false);
-      }
-    };
-
-    fetchPosts();
   }, []);
 
   return (
@@ -126,10 +92,10 @@ const App: React.FC = () => {
         <HashRouter>
           <Suspense fallback={<LoadingScreen isFallback />}>
             <Routes>
-              <Route path="/" element={<Home posts={posts} loadingPosts={loadingPosts} />} />
+              <Route path="/" element={<Home posts={posts} loadingPosts={false} />} />
               <Route path="/index" element={<BlogIndex posts={posts} />} />
               <Route path="/travel" element={<TravelLog />} />
-              <Route path="/blog/:slug" element={<Post posts={posts} loadingPosts={loadingPosts} />} />
+              <Route path="/blog/:slug" element={<Post posts={posts} loadingPosts={false} />} />
             </Routes>
           </Suspense>
         </HashRouter>

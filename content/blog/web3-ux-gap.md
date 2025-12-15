@@ -18,3 +18,4 @@ Key areas we are focusing on:
 3.  **Human Readable Signing**: No more signing random hex strings.
 
 If we want the next billion users, we need to stop building for "Crypto Natives" and start building for humans.
+

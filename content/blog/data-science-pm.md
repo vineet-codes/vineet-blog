@@ -13,3 +13,4 @@ I started my career optimizing hyperparameters for neural networks. Today, I opt
 3.  **Bias:** In data, bias skews your model. In product, confirmation bias skews your strategy.
 
 The transition required me to let go of the "how" (the code) and fall in love with the "why" (the user problem). It was a hard pivot, but my background in engineering gives me a distinct edge in assessing technical feasibility instantly during strategy sessions.
+

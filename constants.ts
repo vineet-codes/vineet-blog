@@ -21,14 +21,6 @@ I like clean systems, sharp incentives, and feedback loops that punish laziness 
 
 This site is where I turn experiments into words, and words back into products.`;
 
-// List of markdown files to fetch from public/blog/
-// We use import.meta.glob to find files, then extract just the filenames
-const blogModules = import.meta.glob('/public/blog/*.md');
-
-export const BLOG_FILES = Object.keys(blogModules)
-  .map((path) => path.split('/').pop() || '')
-  .filter(Boolean);
-
 export const EXPERIENCE: Experience[] = [
   {
     company: "VeChain",
