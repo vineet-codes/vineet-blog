@@ -93,7 +93,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[35%] lg:border-r ${mode.border} z-40 ${mode.bg} lg:bg-transparent relative overflow-hidden flex flex-col justify-between group transition-colors duration-500`}
+      className={`animate-[fadeIn_0.25s_ease-out] lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[35%] lg:border-r ${mode.border} z-40 ${mode.bg} lg:bg-transparent relative overflow-hidden flex flex-col justify-between group transition-colors duration-500`}
     >
       {/* Dynamic Profile Image */}
       {renderProfileImage()}
@@ -152,6 +152,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
           <span>LOC: {CONTACT.location}</span>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </header>
   );
 };
