@@ -137,7 +137,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ fadeOut = false, i
   useEffect(() => {
     if (isFallback) return;
 
-    const duration = 2800; // 2.8s for dramatic effect
+    const duration = 500; // 0.5s fast loading
     const steps = 100;
     const intervalTime = duration / steps;
     
