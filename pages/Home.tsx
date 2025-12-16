@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
 import Section from '../components/Section';
+import BlogPostItem from '../components/BlogPostItem';
 import { useTheme } from '../context/ThemeContext';
 import { BlogPost } from '../types';
 import { EXPERIENCE, EDUCATION, PUBLICATIONS, CERTIFICATIONS, SUMMARY } from '../constants';
@@ -73,21 +74,19 @@ const Home: React.FC<HomeProps> = ({ posts, loadingPosts }) => {
                   <Link to="/travel" className={`hover:underline ${theme.classes.text}`}>Map [Terra Incognita]</Link>
                 </div>
               </div>
-              <div className="flex flex-col">
-                {loadingPosts ? <div className={`h-20 ${mode.quoteBg} animate-pulse w-full`}></div> : posts.slice(0, 3).map((post) => (
-                    <div key={post.slug} onClick={() => navigate(`/blog/${post.slug}`, { state: { from: 'home' } })} className={`group cursor-pointer border-b ${mode.border} transition-all duration-200 py-6 px-4 -mx-4 ${mode.cardHover} ${theme.classes.hoverBorder}`}>
-                      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline transition-transform duration-200 group-hover:translate-x-2">
-                        <div className={`md:col-span-2 font-mono text-xs ${mode.textMuted} uppercase tracking-widest ${theme.classes.groupHoverTextLight}`}>{post.date}</div>
-                        <div className="md:col-span-8">
-                          <h3 className={`text-xl md:text-2xl font-bold ${mode.text} group-hover:text-current leading-tight truncate`}>{post.title}</h3>
-                          <p className={`${mode.textMuted} text-sm mt-2 line-clamp-1 md:hidden ${theme.classes.groupHoverTextLighter}`}>{post.summary}</p>
-                        </div>
-                        <div className="hidden md:col-span-2 md:flex justify-end gap-2 flex-wrap">
-                           {post.tags.slice(0,1).map(tag => (<span key={tag} className={`font-mono text-[10px] border ${mode.border} group-hover:border-current group-hover:text-current px-2 py-1 rounded-none uppercase ${mode.textMuted}`}>{tag}</span>))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+              <div className="flex flex-col -mx-4">
+                {loadingPosts ? (
+                  <div className={`h-20 ${mode.quoteBg} animate-pulse w-full`}></div>
+                ) : (
+                  posts.slice(0, 3).map((post, index) => (
+                    <BlogPostItem
+                      key={post.slug}
+                      post={post}
+                      onClick={() => navigate(`/blog/${post.slug}`, { state: { from: 'home' } })}
+                      index={index}
+                    />
+                  ))
+                )}
               </div>
             </div>
           </section>
