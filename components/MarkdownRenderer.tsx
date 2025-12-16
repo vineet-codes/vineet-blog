@@ -137,14 +137,38 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 );
             }
 
+            // Convert PNG/JPG sources to WebP for optimized loading
+            // The optimization script generates .webp versions alongside originals
+            const getOptimizedSrc = (originalSrc: string): string => {
+                if (originalSrc.match(/\.(png|jpg|jpeg)$/i)) {
+                    return originalSrc.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+                }
+                return originalSrc;
+            };
+
+            const optimizedSrc = getOptimizedSrc(src);
+            const isOptimized = optimizedSrc !== src;
+
             return (
                 <figure className="my-8">
-                    <img 
-                        src={src} 
-                        alt={alt} 
-                        className={`w-full h-auto rounded-lg shadow-md border ${mode.border}`}
-                        loading="lazy"
-                    />
+                    {isOptimized ? (
+                        <picture>
+                            <source srcSet={optimizedSrc} type="image/webp" />
+                            <img 
+                                src={src} 
+                                alt={alt} 
+                                className={`w-full h-auto rounded-lg shadow-md border ${mode.border}`}
+                                loading="lazy"
+                            />
+                        </picture>
+                    ) : (
+                        <img 
+                            src={src} 
+                            alt={alt} 
+                            className={`w-full h-auto rounded-lg shadow-md border ${mode.border}`}
+                            loading="lazy"
+                        />
+                    )}
                     {alt && (
                         <figcaption className={`mt-3 text-center text-xs font-mono uppercase tracking-widest ${mode.textMuted}`}>
                             {alt}

@@ -1,6 +1,7 @@
 import path from 'path';
 import { defineConfig, loadEnv, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { imagetools } from 'vite-imagetools';
 import { execSync } from 'child_process';
 
 /**
@@ -36,7 +37,19 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         host: '0.0.0.0',
       },
-      plugins: [react(), contentWatchPlugin()],
+      plugins: [
+        react(),
+        contentWatchPlugin(),
+        imagetools({
+          defaultDirectives: (url) => {
+            // Auto-apply webp format and quality to all processed images
+            return new URLSearchParams({
+              format: 'webp',
+              quality: '80',
+            });
+          },
+        }),
+      ],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
