@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { CONTACT, PROFILE_IMAGE } from '../constants';
+import { PROFILE_IMAGE } from '../constants';
 import { useTheme } from '../context/ThemeContext';
 
 interface SidebarProps {
@@ -142,15 +142,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
           <img src={PROFILE_IMAGE} className="w-full h-96 object-cover contrast-125" alt="Vineet Singh" />
         </div>
 
-        <div className={`text-xs font-mono uppercase tracking-widest ${mode.textMuted} flex flex-col gap-2 relative z-20 pointer-events-auto`}>
-          {/* <a href={`mailto:${CONTACT.email}`} className={`transition-colors ${theme.classes.hoverText}`}>
-            MAIL: {CONTACT.email}
-          </a> */}
-          <a href={`https://${CONTACT.linkedin}`} target="_blank" rel="noreferrer" className={`transition-colors ${theme.classes.hoverText}`}>
-            LINKEDIN
-          </a>
-          <span>LOC: {CONTACT.location}</span>
-        </div>
       </div>
 
       <style>{`
