@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
-  const { theme, mode } = useTheme();
+  const { theme, mode, isDarkMode } = useTheme();
   
   // Mouse tracking for image effect
   const [mousePos, setMousePos] = useState({ x: 128, y: 160 });
@@ -120,6 +120,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
 
         {/* Navigation */}
         <nav className="hidden lg:block mb-auto relative z-20 pointer-events-auto">
+          {/* Backdrop for readability over image */}
+          <div 
+            className={`absolute -inset-y-3 -inset-x-2 -z-10 rounded-sm backdrop-blur-md ${
+              isDarkMode 
+                ? 'bg-stone-950/80' 
+                : 'bg-stone-50/80'
+            }`}
+          />
           <ul className="space-y-2 font-mono text-xs uppercase tracking-widest">
             {navLinks.map((link) => (
               <li key={link.id}>
