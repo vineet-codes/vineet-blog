@@ -160,6 +160,41 @@ This project uses a **build-time content processing** approach:
 
 3.  That's it! The post will automatically appear in the blog index.
 
+### Footnotes
+
+The blog supports **tooltip-style footnotes** that appear as popups when clicked, keeping readers in context without scrolling.
+
+**Syntax:**
+
+```markdown
+This is a statement that needs a citation[^1].
+
+Another claim with a reference[^2].
+
+[^1]: Source for the first claim
+[^2]: [Link to article](https://example.com) with more details
+```
+
+**How it works:**
+
+- `[^1]` in text → Renders as a clickable `[1]` in the theme accent color
+- `[^1]: content` at bottom → Defines the footnote content (supports markdown, links, etc.)
+- Click the footnote number → Popup appears with the reference
+- Click outside or press `Esc` → Closes the popup
+
+**Implementation details:**
+
+- Footnotes are pre-processed from markdown before rendering (not using remark-gfm's built-in footnotes)
+- Tooltips render via React Portal to avoid HTML nesting issues (`<div>` inside `<p>`)
+- Mobile: Fixed position at bottom of screen
+- Desktop: Positioned above the footnote reference
+
+**Example output:**
+
+> "The 3 questions to ask, Harry dry framework**[1]**"
+> 
+> *[clicking [1] shows a popup with the reference link]*
+
 ### Frontmatter Schema
 
 | Field | Type | Required | Description |
