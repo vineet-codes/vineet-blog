@@ -1,0 +1,69 @@
+/* Tailwind v4 - use @import instead of @tailwind directives */
+@import "tailwindcss";
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Noto+Sans+Devanagari:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap');
+
+/* Custom theme configuration for Tailwind v4 */
+@theme {
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-mono: 'Space Mono', monospace;
+  --font-family-devanagari: 'Noto Sans Devanagari', sans-serif;
+}
+
+/* Base body styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fafaf9; /* Stone 50 */
+  color: #1c1917; /* Stone 900 */
+  cursor: crosshair; /* Swiss design touch */
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Minimalist scrollbar width only - colors handled by App.tsx */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Grain Texture */
+.bg-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Grid Background */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+                    linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+}
+
+/* Grid Background - Dark */
+.bg-grid-dark {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, #292524 1px, transparent 1px),
+                    linear-gradient(to bottom, #292524 1px, transparent 1px);
+}
