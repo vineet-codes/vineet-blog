@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-DdVpe1Xs.js","assets/vendor-DbLIiBzJ.js","assets/BlogPostItem-Bzv_3Xta.js","assets/BlogIndex-DC488jvO.js","assets/Post-BuNHvB_1.js","assets/TravelLog-BBQt4vjZ.js","assets/TravelLog-CIGW-MKW.css"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-BxTzCBbP.js","assets/vendor-DbLIiBzJ.js","assets/BlogPostItem-Wi1J2Pue.js","assets/BlogIndex-B4jErtGv.js","assets/Post-CVYCItNM.js","assets/TravelLog-ZGhkjFSo.js","assets/TravelLog-CIGW-MKW.css"])))=>i.map(i=>d[i]);
 import{r as wm,a as Wm,g as km,b as nt,R as vu,H as $m,c as Fm,d as Qn}from"./vendor-DbLIiBzJ.js";(function(){const q=document.createElement("link").relList;if(q&&q.supports&&q.supports("modulepreload"))return;for(const E of document.querySelectorAll('link[rel="modulepreload"]'))v(E);new MutationObserver(E=>{for(const H of E)if(H.type==="childList")for(const I of H.addedNodes)I.tagName==="LINK"&&I.rel==="modulepreload"&&v(I)}).observe(document,{childList:!0,subtree:!0});function R(E){const H={};return E.integrity&&(H.integrity=E.integrity),E.referrerPolicy&&(H.referrerPolicy=E.referrerPolicy),E.crossOrigin==="use-credentials"?H.credentials="include":E.crossOrigin==="anonymous"?H.credentials="omit":H.credentials="same-origin",H}function v(E){if(E.ep)return;E.ep=!0;const H=R(E);fetch(E.href,H)}})();var nf={exports:{}},mu={};/**
  * @license React
  * react-jsx-runtime.production.js
@@ -55,7 +55,9 @@ What do you want them to feel ? Thats emotion you wanna be remembered for.
 
 communication = comprehension + emotion
 
-The 3 questions to ask, Harry dry principle
+Once you figure that out, use the below framewok to make your copy punchier.
+
+The 3 questions to ask, Harry dry framework[^1]
 
 1. Can I visualize it ? Make it concrete
 2. Can i falsify it ? Don't talk, only point. 
@@ -67,7 +69,10 @@ The 3 questions to ask, Harry dry principle
 
 ![Can i falsify it ? Don't talk, only point](/vineet-blog/blog/copywriter-tech/02-rule.png)
 
-![Can nobody else say it ?](/vineet-blog/blog/copywriter-tech/03-rule.png)`},{slug:"web3-ux-gap",title:"Bridging the Gap: Web2 UX in a Web3 World",date:"Oct 2024",summary:"Why mass adoption relies on hiding the complexity of blockchain, not celebrating it.",tags:["Product","Web3","UX"],content:`The biggest barrier to blockchain adoption isn't scalability or gas fees—it's cognitive load. For years, we've asked users to understand private keys, gas limits, and RPC endpoints just to send a transaction. This is a failure of product, not technology.
+![Can nobody else say it ?](/vineet-blog/blog/copywriter-tech/03-rule.png)
+
+
+[^1]: [Learn Copywriting in 76 Minutes – Harry Dry](https://www.youtube.com/watch?v=TUMjnmfsPeM)`},{slug:"web3-ux-gap",title:"Bridging the Gap: Web2 UX in a Web3 World",date:"Oct 2024",summary:"Why mass adoption relies on hiding the complexity of blockchain, not celebrating it.",tags:["Product","Web3","UX"],content:`The biggest barrier to blockchain adoption isn't scalability or gas fees—it's cognitive load. For years, we've asked users to understand private keys, gas limits, and RPC endpoints just to send a transaction. This is a failure of product, not technology.
 
 At VeChain, specifically with the VeWorld wallet, my focus has been on abstraction. Users don't care about the database schema of their banking app; they shouldn't have to care about the consensus mechanism of their crypto wallet.
 
@@ -114,7 +119,7 @@ Every feature you add increases the cognitive surface area of your product. It g
 
 True minimalism isn't about white space or Helvetica fonts; it's about **clarity of purpose**. 
 
-When we designed the new wallet architecture, we cut 40% of the existing features. The result? Engagement went up by 60%. By removing the noise, we allowed the signal—the core utility—to shine through.`}];function my(){return hy}const yy=vu.lazy(()=>sa(()=>import("./Home-DdVpe1Xs.js"),__vite__mapDeps([0,1,2]))),vy=vu.lazy(()=>sa(()=>import("./BlogIndex-DC488jvO.js"),__vite__mapDeps([3,1,2]))),gy=vu.lazy(()=>sa(()=>import("./Post-BuNHvB_1.js"),__vite__mapDeps([4,1]))),ry=vu.lazy(()=>sa(()=>import("./TravelLog-BBQt4vjZ.js"),__vite__mapDeps([5,1,6]))),sf=my(),by=()=>{const{activeThemeKey:T,setActiveThemeKey:q,isDarkMode:R,setIsDarkMode:v,theme:E,mode:H}=Td(),[I,$]=nt.useState(!0),[dl,P]=nt.useState(!1);return nt.useEffect(()=>{sa(()=>import("./Home-DdVpe1Xs.js"),__vite__mapDeps([0,1,2])),sa(()=>import("./BlogIndex-DC488jvO.js"),__vite__mapDeps([3,1,2])),sa(()=>import("./TravelLog-BBQt4vjZ.js"),__vite__mapDeps([5,1,6])),sa(()=>import("./Post-BuNHvB_1.js"),__vite__mapDeps([4,1]));const fl=setTimeout(()=>{P(!0)},2800),x=setTimeout(()=>{$(!1)},3500);return()=>{clearTimeout(fl),clearTimeout(x)}},[]),p.jsxs("div",{className:`min-h-screen ${H.bg} ${H.text} ${H.grid} transition-colors duration-500`,children:[p.jsx("style",{children:`
+When we designed the new wallet architecture, we cut 40% of the existing features. The result? Engagement went up by 60%. By removing the noise, we allowed the signal—the core utility—to shine through.`}];function my(){return hy}const yy=vu.lazy(()=>sa(()=>import("./Home-BxTzCBbP.js"),__vite__mapDeps([0,1,2]))),vy=vu.lazy(()=>sa(()=>import("./BlogIndex-B4jErtGv.js"),__vite__mapDeps([3,1,2]))),gy=vu.lazy(()=>sa(()=>import("./Post-CVYCItNM.js"),__vite__mapDeps([4,1]))),ry=vu.lazy(()=>sa(()=>import("./TravelLog-ZGhkjFSo.js"),__vite__mapDeps([5,1,6]))),sf=my(),by=()=>{const{activeThemeKey:T,setActiveThemeKey:q,isDarkMode:R,setIsDarkMode:v,theme:E,mode:H}=Td(),[I,$]=nt.useState(!0),[dl,P]=nt.useState(!1);return nt.useEffect(()=>{sa(()=>import("./Home-BxTzCBbP.js"),__vite__mapDeps([0,1,2])),sa(()=>import("./BlogIndex-B4jErtGv.js"),__vite__mapDeps([3,1,2])),sa(()=>import("./TravelLog-ZGhkjFSo.js"),__vite__mapDeps([5,1,6])),sa(()=>import("./Post-CVYCItNM.js"),__vite__mapDeps([4,1]));const fl=setTimeout(()=>{P(!0)},2800),x=setTimeout(()=>{$(!1)},3500);return()=>{clearTimeout(fl),clearTimeout(x)}},[]),p.jsxs("div",{className:`min-h-screen ${H.bg} ${H.text} ${H.grid} transition-colors duration-500`,children:[p.jsx("style",{children:`
         ::selection {
           background-color: ${E.hex} !important;
           color: white;
