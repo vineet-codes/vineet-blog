@@ -152,7 +152,7 @@ export const TRAVEL_DATA: TravelEntry[] = [
 ];
 
 // Theme Configuration
-export type ThemeKey = 'red' | 'orange' | 'blue' | 'green';
+export type ThemeKey = 'green' | 'red' | 'orange' | 'blue' ;
 
 export const THEMES: Record<ThemeKey, any> = {
   red: {
@@ -167,7 +167,7 @@ export const THEMES: Record<ThemeKey, any> = {
       groupHoverText: 'group-hover:text-red-600',
       groupHoverTextLight: 'group-hover:text-red-200',
       groupHoverTextLighter: 'group-hover:text-red-100',
-      activeNav: 'text-red-600 font-bold pl-4 border-red-600',
+      activeNav: 'text-red-600 font-bold pr-0 pl-4 border-red-600',
       proseLink: 'prose-a:text-red-600',
       proseQuote: 'prose-blockquote:border-red-600',
       placeholder: 'placeholder:text-red-300',
@@ -186,7 +186,7 @@ export const THEMES: Record<ThemeKey, any> = {
       groupHoverText: 'group-hover:text-orange-600',
       groupHoverTextLight: 'group-hover:text-orange-200',
       groupHoverTextLighter: 'group-hover:text-orange-100',
-      activeNav: 'text-orange-600 font-bold pl-4 border-orange-600',
+      activeNav: 'text-orange-600 font-bold pr-0 pl-4 border-orange-600',
       proseLink: 'prose-a:text-orange-600',
       proseQuote: 'prose-blockquote:border-orange-600',
       placeholder: 'placeholder:text-orange-300',
@@ -205,7 +205,7 @@ export const THEMES: Record<ThemeKey, any> = {
       groupHoverText: 'group-hover:text-blue-600',
       groupHoverTextLight: 'group-hover:text-blue-200',
       groupHoverTextLighter: 'group-hover:text-blue-100',
-      activeNav: 'text-blue-600 font-bold pl-4 border-blue-600',
+      activeNav: 'text-blue-600 font-bold pr-0 pl-4 border-blue-600',
       proseLink: 'prose-a:text-blue-600',
       proseQuote: 'prose-blockquote:border-blue-600',
       placeholder: 'placeholder:text-blue-300',
@@ -224,7 +224,7 @@ export const THEMES: Record<ThemeKey, any> = {
       groupHoverText: 'group-hover:text-green-600',
       groupHoverTextLight: 'group-hover:text-green-200',
       groupHoverTextLighter: 'group-hover:text-green-100',
-      activeNav: 'text-green-600 font-bold pl-4 border-green-600',
+      activeNav: 'text-green-600 font-bold pr-0 pl-4 border-green-600',
       proseLink: 'prose-a:text-green-600',
       proseQuote: 'prose-blockquote:border-green-600',
       placeholder: 'placeholder:text-green-300',

@@ -119,7 +119,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
         </div>
 
         {/* Navigation */}
-        <nav className="hidden lg:block mb-auto relative z-20 pointer-events-auto">
+        <nav className="hidden lg:block mb-auto relative z-20 pointer-events-auto w-fit">
           {/* Backdrop for readability over image */}
           <div 
             className={`absolute -inset-y-3 -inset-x-2 -z-10 rounded-sm backdrop-blur-md ${
@@ -134,7 +134,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
                 <a 
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className={`block py-2 border-b border-transparent hover:pl-4 transition-all duration-300 ${theme.classes.hoverBorder} ${
+                  className={`block py-2 pr-4 hover:pr-0 hover:pl-4 border-b border-transparent transition-all duration-300 ${theme.classes.hoverBorder} ${
                     activeSection === link.id ? theme.classes.activeNav : `${mode.textMuted} hover:${mode.text}`
                   }`}
                 >
