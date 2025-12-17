@@ -37,7 +37,7 @@ const BlogPostItem: React.FC<BlogPostItemProps> = ({ post, onClick, index = 0 })
       <div
         className={`flex flex-col md:flex-row items-start md:items-center justify-between py-6 md:py-8 px-4 transition-all duration-300 ${mode.cardHover} ${theme.classes.hoverText}`}
       >
-        <div className="flex flex-col md:flex-row items-start md:items-center w-full transition-transform duration-300 group-hover:translate-x-4">
+        <div className="flex flex-col md:flex-row items-start md:items-center w-full transition-transform duration-300 group-hover:translate-x-1">
           {/* Date */}
           <div
             className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} group-hover:text-current opacity-80 mb-2 md:mb-0 w-28 flex-shrink-0`}
