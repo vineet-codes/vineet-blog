@@ -15,7 +15,7 @@ communication = comprehension + emotion
 
 Once you figure that out, use the below framewok to make your copy punchier.
 
-The 3 questions to ask, Harry dry framework[^1]
+The 3 questions to ask, Harry dry framework[^1][^2]
 
 1. Can I visualize it ? Make it concrete
 2. Can i falsify it ? Don't talk, only point. 
@@ -30,4 +30,8 @@ The 3 questions to ask, Harry dry framework[^1]
 ![Can nobody else say it ?](/vineet-blog/blog/copywriter-tech/03-rule.png)
 
 
+
+
+
 [^1]: [Learn Copywriting in 76 Minutes – Harry Dry](https://www.youtube.com/watch?v=TUMjnmfsPeM)
+[^2]: [Chat with Harry Dry video in NotebookLm](https://notebooklm.google.com/notebook/b84eba35-ecb7-42a2-bc76-920fd0cc5328?artifactId=09794336-b7c3-4268-a0c5-a5f4f122d157)

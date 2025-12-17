@@ -6,13 +6,41 @@ import { execSync } from 'child_process';
 
 /**
  * Custom Vite plugin that watches markdown files in content/blog/
- * and automatically rebuilds the generated posts when they change.
+ * and images in public/blog/, automatically rebuilding when they change.
  */
 function contentWatchPlugin(): Plugin {
+  let imageOptimizeTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  const runImageOptimization = () => {
+    // Debounce image optimization to handle batch additions
+    if (imageOptimizeTimeout) {
+      clearTimeout(imageOptimizeTimeout);
+    }
+    imageOptimizeTimeout = setTimeout(() => {
+      try {
+        execSync('npx tsx scripts/optimize-images.ts', { stdio: 'inherit' });
+        console.log('🔄 Hot reloading...\n');
+      } catch (error) {
+        console.error('❌ Failed to optimize images:', error);
+      }
+    }, 500);
+  };
+
+  const handleImageFile = (file: string, eventType: string) => {
+    if (file.includes('public/blog') && /\.(png|jpg|jpeg)$/i.test(file)) {
+      console.log(`\n🖼️  Image ${eventType}: ${path.basename(file)}`);
+      runImageOptimization();
+    }
+  };
+
   return {
     name: 'content-watch',
     configureServer(server) {
+      // Watch markdown content
       server.watcher.add('./content/blog');
+      // Watch images in public/blog
+      server.watcher.add('./public/blog');
+
       server.watcher.on('change', (file) => {
         if (file.includes('content/blog') && file.endsWith('.md')) {
           console.log(`\n📝 Blog content changed: ${path.basename(file)}`);
@@ -23,6 +51,11 @@ function contentWatchPlugin(): Plugin {
             console.error('❌ Failed to rebuild content:', error);
           }
         }
+        handleImageFile(file, 'changed');
+      });
+
+      server.watcher.on('add', (file) => {
+        handleImageFile(file, 'added');
       });
     }
   };
