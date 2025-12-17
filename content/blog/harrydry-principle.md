@@ -13,7 +13,9 @@ What do you want them to feel ? Thats emotion you wanna be remembered for.
 
 communication = comprehension + emotion
 
-The 3 questions to ask, Harry dry principle
+Once you figure that out, use the below framewok to make your copy punchier.
+
+The 3 questions to ask, Harry dry framework[^1]
 
 1. Can I visualize it ? Make it concrete
 2. Can i falsify it ? Don't talk, only point. 
@@ -26,3 +28,6 @@ The 3 questions to ask, Harry dry principle
 ![Can i falsify it ? Don't talk, only point](/vineet-blog/blog/copywriter-tech/02-rule.png)
 
 ![Can nobody else say it ?](/vineet-blog/blog/copywriter-tech/03-rule.png)
+
+
+[^1]: [Learn Copywriting in 76 Minutes – Harry Dry](https://www.youtube.com/watch?v=TUMjnmfsPeM)
