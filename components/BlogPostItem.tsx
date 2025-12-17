@@ -26,7 +26,12 @@ function formatDisplayDate(dateStr: string): string {
 }
 
 const BlogPostItem: React.FC<BlogPostItemProps> = ({ post, onClick, index = 0 }) => {
-  const { mode, theme } = useTheme();
+  const { mode, theme, isDarkMode } = useTheme();
+  
+  // Use lighter text in dark mode, darker text in light mode for readability
+  const summaryHoverClass = isDarkMode 
+    ? theme.classes.groupHoverTextLighter 
+    : theme.classes.groupHoverText;
 
   return (
     <div
@@ -54,7 +59,7 @@ const BlogPostItem: React.FC<BlogPostItemProps> = ({ post, onClick, index = 0 })
             </h3>
             {/* Summary */}
             <p
-              className={`${mode.textMuted} text-sm mt-1 line-clamp-2 md:line-clamp-1 ${theme.classes.groupHoverTextLighter}`}
+              className={`${mode.textMuted} text-sm mt-1 line-clamp-2 md:line-clamp-1 ${summaryHoverClass}`}
             >
               {post.summary}
             </p>
