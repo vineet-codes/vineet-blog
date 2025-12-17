@@ -1,6 +1,6 @@
 ---
 title: The Art of Code
-date: May 2023
+date: 2023-05-01
 summary: Exploring the intersection of algorithms and aesthetics in modern web development.
 tags: [Design, Engineering, Creative]
 ---

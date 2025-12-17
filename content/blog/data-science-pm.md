@@ -1,6 +1,6 @@
 ---
 title: From Data Scientist to Product Director
-date: Jun 2023
+date: 2023-06-01
 summary: Lessons learned transitioning from training neural networks to leading product teams.
 tags: [Career, Leadership, Data Science]
 ---

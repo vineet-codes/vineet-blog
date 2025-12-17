@@ -1,6 +1,6 @@
 ---
 title: Bridging the Gap: Web2 UX in a Web3 World
-date: Oct 2024
+date: 2024-10-01
 summary: Why mass adoption relies on hiding the complexity of blockchain, not celebrating it.
 tags: [Product, Web3, UX]
 ---

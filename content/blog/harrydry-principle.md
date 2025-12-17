@@ -1,6 +1,6 @@
 ---
 title: Write Better. Ask 3 Questions
-date: Dec 2025
+date: 2025-12-15
 summary: The 3-question test for writing that actually lands
 tags: [copywrting, marketting]
 ---

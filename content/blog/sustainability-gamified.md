@@ -1,6 +1,6 @@
 ---
 title: Gamifying Sustainability
-date: Aug 2024
+date: 2024-08-01
 summary: How tokenomics can incentivize real-world positive behavioral change.
 tags: [Blockchain, Sustainability, Strategy]
 ---

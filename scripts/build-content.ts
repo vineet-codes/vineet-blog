@@ -67,14 +67,22 @@ function parseMarkdownFile(filename: string, text: string): BlogPost {
 
 /**
  * Parse date string to comparable value
- * Handles formats like "May 2023", "Aug 2024", etc.
+ * Handles ISO format (YYYY-MM-DD) and legacy formats like "May 2023"
  */
 function parseDateForSort(dateStr: string): number {
+  // Try ISO format first (YYYY-MM-DD)
+  const isoMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr);
+  if (isoMatch) {
+    const [, year, month, day] = isoMatch;
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day)).getTime();
+  }
+  
+  // Fallback for legacy "Month Year" format
   const date = new Date(dateStr);
   if (!isNaN(date.getTime())) {
     return date.getTime();
   }
-  // Fallback for simple month year format
+  
   return 0;
 }
 

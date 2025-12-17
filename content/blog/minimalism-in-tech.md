@@ -1,6 +1,6 @@
 ---
 title: Digital Minimalism
-date: Mar 2023
+date: 2023-03-01
 summary: Why removing features is often more powerful than adding them.
 tags: [Product, Philosophy, UX]
 ---

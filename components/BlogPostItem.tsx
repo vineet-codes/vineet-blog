@@ -8,6 +8,23 @@ interface BlogPostItemProps {
   index?: number;
 }
 
+/**
+ * Format an ISO date string (YYYY-MM-DD) or legacy format to display format
+ * Returns compact format like "Dec '25"
+ */
+function formatDisplayDate(dateStr: string): string {
+  // Try ISO format (YYYY-MM-DD)
+  const isoMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr);
+  if (isoMatch) {
+    const [, year, month] = isoMatch;
+    const date = new Date(parseInt(year), parseInt(month) - 1, 1);
+    const monthStr = date.toLocaleDateString('en-US', { month: 'short' });
+    return `${monthStr} '${year.slice(2)}`;
+  }
+  // Return as-is for legacy formats
+  return dateStr;
+}
+
 const BlogPostItem: React.FC<BlogPostItemProps> = ({ post, onClick, index = 0 }) => {
   const { mode, theme } = useTheme();
 
@@ -25,7 +42,7 @@ const BlogPostItem: React.FC<BlogPostItemProps> = ({ post, onClick, index = 0 })
           <div
             className={`font-mono text-xs uppercase tracking-widest ${mode.textMuted} group-hover:text-current opacity-80 mb-2 md:mb-0 w-28 flex-shrink-0`}
           >
-            {post.date}
+            {formatDisplayDate(post.date)}
           </div>
 
           {/* Title & Summary */}
