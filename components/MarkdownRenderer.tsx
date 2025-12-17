@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useTheme } from '../context/ThemeContext';
@@ -80,89 +81,98 @@ const FootnoteTooltip: React.FC<{
     };
   }, [isOpen]);
 
+  // Get button position for desktop tooltip positioning
+  const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({});
+  
+  useEffect(() => {
+    if (isOpen && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setTooltipStyle({
+        position: 'fixed',
+        left: `${rect.left}px`,
+        bottom: `${window.innerHeight - rect.top + 12}px`,
+      });
+    }
+  }, [isOpen]);
+
   return (
-    <span className="relative inline">
+    <span className="inline">
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className={`
-          inline-flex items-center justify-center
-          font-mono text-[10px] font-bold
-          px-0.5
-          transition-all duration-200
-          cursor-pointer
-          hover:opacity-70
-        `}
+        className="inline-flex items-center justify-center font-mono text-[10px] font-bold px-0.5 transition-all duration-200 cursor-pointer hover:opacity-70"
         style={{ color: theme.hex }}
         aria-label={`View footnote ${id}`}
       >
         [{id}]
       </button>
       
-      {isOpen && (
+      {isOpen && createPortal(
         <div
           ref={tooltipRef}
-          className="absolute z-50 left-0 bottom-full mb-3 w-[280px] md:w-[400px] border"
+          className="fixed z-50 left-4 right-4 bottom-20 md:left-auto md:right-auto md:w-[400px] border"
           style={{ 
             backgroundColor: mode.bg === 'bg-stone-50' ? '#fafaf9' : '#1c1917',
             borderColor: mode.bg === 'bg-stone-50' ? '#e7e5e4' : '#44403c',
+            ...( window.innerWidth >= 768 ? tooltipStyle : {}),
           }}
           role="tooltip"
         >
-            {/* Header */}
-            <div 
-              className="flex items-center justify-between px-4 py-3 md:py-2 border-b"
-              style={{ borderColor: theme.hex, backgroundColor: theme.hex }}
+          {/* Header */}
+          <div 
+            className="flex items-center justify-between px-4 py-3 md:py-2 border-b"
+            style={{ borderColor: theme.hex, backgroundColor: theme.hex }}
+          >
+            <span className="font-mono text-[10px] uppercase tracking-widest text-white">
+              Reference {id}
+            </span>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="text-white/70 hover:text-white text-sm md:text-xs font-mono transition-colors p-1"
             >
-              <span className="font-mono text-[10px] uppercase tracking-widest text-white">
-                Reference {id}
-              </span>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="text-white/70 hover:text-white text-sm md:text-xs font-mono transition-colors p-1"
-              >
-                ✕
-              </button>
-            </div>
-            
-            {/* Content */}
-            <div 
-              className="p-4 text-sm leading-relaxed"
-              style={{ color: mode.bg === 'bg-stone-50' ? '#1c1917' : '#fafaf9' }}
-            >
-              <Markdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  p: ({ children }) => <span>{children}</span>,
-                  a: ({ href, children }) => (
-                    <a 
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`underline decoration-1 underline-offset-2 hover:opacity-70 transition-opacity ${theme.classes.text}`}
-                    >
-                      {children} ↗
-                    </a>
-                  ),
-                }}
-              >
-                {content}
-              </Markdown>
-            </div>
-            
-            {/* Footer */}
-            <div 
-              className="px-4 py-2 border-t"
-              style={{ borderColor: mode.bg === 'bg-stone-50' ? '#e7e5e4' : '#44403c' }}
-            >
-              <span 
-                className="text-[9px] font-mono uppercase tracking-widest"
-                style={{ color: mode.bg === 'bg-stone-50' ? '#78716c' : '#a8a29e' }}
-              >
-                Tap outside to close
-              </span>
-            </div>
+              ✕
+            </button>
           </div>
+          
+          {/* Content */}
+          <div 
+            className="p-4 text-sm leading-relaxed"
+            style={{ color: mode.bg === 'bg-stone-50' ? '#1c1917' : '#fafaf9' }}
+          >
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => <span>{children}</span>,
+                a: ({ href, children }) => (
+                  <a 
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`underline decoration-1 underline-offset-2 hover:opacity-70 transition-opacity ${theme.classes.text}`}
+                  >
+                    {children} ↗
+                  </a>
+                ),
+              }}
+            >
+              {content}
+            </Markdown>
+          </div>
+          
+          {/* Footer */}
+          <div 
+            className="px-4 py-2 border-t"
+            style={{ borderColor: mode.bg === 'bg-stone-50' ? '#e7e5e4' : '#44403c' }}
+          >
+            <span 
+              className="text-[9px] font-mono uppercase tracking-widest"
+              style={{ color: mode.bg === 'bg-stone-50' ? '#78716c' : '#a8a29e' }}
+            >
+              Tap outside to close
+            </span>
+          </div>
+        </div>,
+        document.body
       )}
     </span>
   );
