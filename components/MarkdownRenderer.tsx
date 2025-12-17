@@ -247,7 +247,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           }
           
           return (
-            <p className={`text-lg md:text-xl font-serif leading-relaxed mb-6 ${mode.text} opacity-90`}>
+            <p className={`text-lg md:text-xl font-serif leading-relaxed mb-6 last:mb-0 ${mode.text} opacity-90`}>
               {processedChildren}
             </p>
           );
