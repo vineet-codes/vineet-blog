@@ -27,15 +27,15 @@ const App: React.FC = () => {
     import('./pages/TravelLog');
     import('./pages/Post');
 
-    // Start fade out at 2.8s (match animation duration)
+    // Start fade out at 400ms (quick, minimal)
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
-    }, 2800);
+    }, 400);
 
-    // Remove splash at 3.5s (giving time for fade transition)
+    // Remove splash at 900ms (giving time for fade transition)
     const removeTimer = setTimeout(() => {
       setShowSplash(false);
-    }, 3500);
+    }, 900);
 
     return () => {
       clearTimeout(fadeTimer);

@@ -67,3 +67,17 @@ html {
   background-image: linear-gradient(to right, #292524 1px, transparent 1px),
                     linear-gradient(to bottom, #292524 1px, transparent 1px);
 }
+
+/* Swiss-inspired loading animation */
+@keyframes loading-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-loading-line {
+  animation: loading-line 0.8s ease-in-out infinite;
+}
